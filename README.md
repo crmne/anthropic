@@ -94,13 +94,17 @@ end
 
 Available Models:
 
-| Name            | API Name                 |
-| --------------- | ------------------------ |
-| Claude 3 Opus   | claude-3-opus-20240229   |
-| Claude 3 Sonnet | claude-3-sonnet-20240229 |
-| Claude 3 Haiku  | claude-3-haiku-20240307  |
+| Name                  | API Name                    |
+| -------------------- | --------------------------- |
+| Claude 3.5 Sonnet    | claude-3-5-sonnet-20241022 |
+| Claude 3.5 Haiku     | claude-3-5-haiku-20241022  |
+| Claude 3 Opus        | claude-3-opus-20240229     |
+| Claude 3 Sonnet      | claude-3-sonnet-20240229   |
+| Claude 3 Haiku       | claude-3-haiku-20240307    |
+| Claude 2.1           | claude-2.1                 |
+| Claude 2.0           | claude-2.0                 |
 
-You can find the latest model names in the [Anthropic API documentation](https://docs.anthropic.com/claude/docs/models-overview#model-recommendations).
+You can get the latest list of available models using the `models` method (see below), or find the latest model names in the [Anthropic API documentation](https://docs.anthropic.com/claude/docs/models-overview#model-recommendations).
 
 ### Messages
 
@@ -199,6 +203,22 @@ Then Claude v3, even Haiku, might respond with:
 
 ```ruby
 [{"name"=>"Mount Everest", "height"=>"8.85 km"}, {"name"=>"K2", "height"=>"8.61 km"}, {"name"=>"Kangchenjunga", "height"=>"8.58 km"}]
+```
+### List Models
+
+Get information about the available models:
+
+```ruby
+response = client.models
+# => [
+#     {
+#       "type"=>"model",
+#       "id"=>"claude-3-5-sonnet-20241022",
+#       "display_name"=>"Claude 3.5 Sonnet (New)",
+#       "created_at"=>"2024-10-22T00:00:00Z"},
+#     },
+#     # ... more models ...
+#   ]
 ```
 
 ### Streaming

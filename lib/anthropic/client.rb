@@ -67,6 +67,22 @@ module Anthropic
       json_post(path: "/messages", parameters: parameters)
     end
 
+    # Retrieves the list of available models
+    # @return [Hash] List of available models and their information
+    # @example Response format:
+    #   [
+    #     {
+    #       "type"=>"model",
+    #       "id"=>"claude-3-5-sonnet-20241022",
+    #       "display_name"=>"Claude 3.5 Sonnet (New)",
+    #       "created_at"=>"2024-10-22T00:00:00Z"},
+    #     },
+    #     # ... more models ...
+    #   ]
+    def models
+      json_get(path: "/models")["data"]
+    end
+
     private
 
     # Used only by @deprecated +complete+ method
